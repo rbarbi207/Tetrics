@@ -1,0 +1,101 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dual Countdown Timers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .player {
+            border: 3px solid purple;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+        }
+        .timer {
+            font-size: 2em;
+            margin: 10px 0;
+        }
+        button {
+            font-size: 1em;
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="player">
+            <h2>Player 1</h2>
+            <div class="timer" id="timer1">01:00</div>
+            <button onclick="startTimer(1)">Start</button>
+            <button onclick="stopTimer(1)">Stop</button>
+            <button onclick="resetTimer(1)">Reset</button>
+        </div>
+        <div>
+            <div class="timer" id="timer1-lines">Lines: 0</div>
+            <div class="timer" id="timer2-lines">Lines: 0</div>
+        </div>
+        <div class="player">
+            <h2>Player 2</h2>
+            <div class="timer" id="timer2">01:00</div>
+            <button onclick="startTimer(2)">Start</button>
+            <button onclick="stopTimer(2)">Stop</button>
+            <button onclick="resetTimer(2)">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let timers = { 1: 60, 2: 60 };
+        let running = { 1: false, 2: false };
+        let intervals = {};
+
+        function updateDisplay(player) {
+            let minutes = Math.floor(timers[player] / 60).toString().padStart(2, '0');
+            let seconds = (timers[player] % 60).toString().padStart(2, '0');
+            document.getElementById(`timer${player}`).textContent = `${minutes}:${seconds}`;
+        }
+
+        function startTimer(player) {
+            if (!running[player]) {
+                running[player] = true;
+                intervals[player] = setInterval(() => {
+                    if (timers[player] > 0) {
+                        timers[player]--;
+                        updateDisplay(player);
+                    } else {
+                        clearInterval(intervals[player]);
+                        running[player] = false;
+                        alert(`Player ${player} Time's up!`);
+                    }
+                }, 1000);
+            }
+        }
+
+        function stopTimer(player) {
+            clearInterval(intervals[player]);
+            running[player] = false;
+        }
+
+        function resetTimer(player) {
+            clearInterval(intervals[player]);
+            timers[player] = 60;
+            running[player] = false;
+            updateDisplay(player);
+        }
+
+        updateDisplay(1);
+        updateDisplay(2);
+    </script>
+</body>
+</html>
