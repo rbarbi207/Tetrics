@@ -4,7 +4,6 @@
 //Csíkok kitörlése
 //Timer
 //Nyerés (Csoda dolgok)
-//CCS
+//CCS -> Háttér
 //Hangeffekt??
 //Pontszám
-//Bot?????? ----> nehézségek???
