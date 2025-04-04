@@ -5,24 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
 <body>
-    <div class="Blur">
-        <h1>Tetris</h1>
-        <div class="SinglePlayer" style="display: none;"></div>
-        <div class="MultiPlayer" style="display: none;"></div>
-        <div class="game-container" id="gameArea"></div>
-    </div>
-    <div class="Single">
-        <canvas id="canvas" class="SingleCanvas" width="300" height="600"></canvas>
-    </div>
-    <div class="Multi">
-        <canvas id="canvas1" class="MultiCanvas1" width="300" height="600"></canvas>
-        <canvas id="canvas2" class="MultiCanvas2" width="300" height="600"></canvas>
-    </div>
-    <div class="Choice">
-        <button onclick="startSingle()">SinglePlayer</button>
-        <button onclick="startMulti()">MultiPlayer</button>
+    <div class="container">
+        <div class="Blur">
+            <h1>Tetris</h1>
+            <div class="SinglePlayer" style="display: none;"></div>
+            <div class="MultiPlayer" style="display: none;"></div>
+            <div class="game-container" id="gameArea"></div>
+
+            <div class="Single">
+                <h2>Score <span id="score">0</span></h2>
+                <canvas id="canvas" class="SingleCanvas" width="300" height="600"></canvas>
+            </div>
+
+            <div class="Multi">
+                <canvas id="canvas1" class="MultiCanvas1" width="300" height="600"></canvas>
+                <canvas id="canvas2" class="MultiCanvas2" width="300" height="600"></canvas>
+            </div>
+        </div>
+        
+        <div class="Choice">
+            <button onclick="startSingle()">SinglePlayer</button>
+            <button onclick="startMulti()">MultiPlayer</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

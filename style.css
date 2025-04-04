@@ -1,0 +1,111 @@
+* {
+    font-family: 'Press Start 2P', cursive;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    /*background-color: #78c1f3;*/
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image: url(background.jpg);
+}
+
+/* ------------------ FŐOLDAL -------------------- */
+
+h1 {
+    padding-top: 20px;
+    text-align: center;
+    font-size: 40px;
+}
+
+.container {
+    width: 1200px;
+    height: 900px;
+    background-color: gray;
+    margin: auto;
+}
+
+.Blur {
+    opacity: 0;
+    filter: blur(4px);
+    transition: 0.5s ease-in-out;
+}
+
+
+/* ------------------------------- JÁTÉK OLDAL ------------------------------ */
+
+h2 {
+    text-align: center;
+}
+
+canvas {
+    border: 3px solid black;
+    background: #181825;
+    box-shadow: 14px 14px 0 0 white;
+}
+
+.Blur.hidden {
+    filter: none;
+    opacity: 1;
+}
+
+.Single, .Multi{
+    display: none;
+}
+
+.Choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 35%;
+    left: 41%;
+    position: fixed;
+    width: 350px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: lightgrey;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.Choice.hidden {
+    transform: translateY(100vh); 
+    opacity: 0;
+}
+
+.Choice button {
+    margin: 15px;
+    width: 250px;
+    height: 55px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background-color: grey;
+    font-size: 20px;
+}
+
+    /* --------- EGYJÁTÉKOS CANVAS -------------- */
+
+.SingleCanvas {
+    display: block;
+    margin: 20px auto;
+    opacity: 1;
+}
+    /* ------------ TÖBBJÁTÉKOS CANVAS -----------------*/
+
+.MultiCanvas1 {
+    position: fixed;
+    left: 25%;
+    opacity: 1;
+}
+
+.MultiCanvas2 {
+    position: fixed;
+    right: 25%;
+    opacity: 1;
+}
+
