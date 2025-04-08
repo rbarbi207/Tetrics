@@ -5,6 +5,12 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    cursor: default;
+    overflow: hidden;
+}
+
 body {
     /*background-color: #78c1f3;*/
     min-height: 100vh;
@@ -13,14 +19,48 @@ body {
     justify-content: center;
     flex-direction: column;
     background-image: url(background.jpg);
+    overflow: hidden;
 }
 
 /* ------------------ FŐOLDAL -------------------- */
+.Choice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 35%;
+    left: 41%;
+    position: fixed;
+    width: 350px;
+    height: 200px;
+    border-radius: 20px;
+    background-color: lightgrey;
+    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+}
 
-h1 {
-    padding-top: 20px;
-    text-align: center;
-    font-size: 40px;
+.Choice.hidden {
+    transform: translateY(100vh); 
+    opacity: 0;
+    display: none;
+}
+
+.Choice button {
+    margin: 15px;
+    width: 250px;
+    height: 55px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background-color: grey;
+    font-size: 20px;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.Choice button:hover {
+    color: white;
+    position: relative;
+    height: 60px;
+    width: 280px;
+    font-size: 22px;
 }
 
 .container {
@@ -36,76 +76,128 @@ h1 {
     transition: 0.5s ease-in-out;
 }
 
+.Blur.hidden {
+    filter: none;
+    opacity: 1;
+}
 
-/* ------------------------------- JÁTÉK OLDAL ------------------------------ */
+/* ------------------- Tetris oldal ---------------------*/
+#arrow {
+    margin-top: 10px;
+    position: fixed;
+    font-size: 40px;
+    transition: font-size 0.1s ease-in-out;
+}
 
-h2 {
+#arrow:hover {
+    color: white;
+    font-size: 45px;
+}
+
+h1 {
+    padding-top: 20px;
     text-align: center;
+    font-size: 40px;
 }
 
 canvas {
     border: 3px solid black;
-    background: #181825;
-    box-shadow: 14px 14px 0 0 white;
-}
-
-.Blur.hidden {
-    filter: none;
-    opacity: 1;
+    background: #353546;
+    box-shadow: 14px 14px 0 0 rgb(209, 207, 207);
 }
 
 .Single, .Multi{
     display: none;
 }
 
-.Choice {
+/* --------- EGYJÁTÉKOS CANVAS -------------- */
+
+.Single {
+    position: relative;
+    top: -970px;
+    display: block;
+    opacity: 0;
+    margin: 40px;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    text-align: center;
+}
+
+.Single h2 {
+    margin-bottom: 10px;
+}
+
+.Single.active {
+    opacity: 1;
+    transform: translateY(990px); 
+}
+
+.GameOverlay {
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 70px;
+    width: 300px;
+    font-size: 24px;
+    color: white;
+    background: rgba(29, 29, 29, 0.8);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: 35%;
-    left: 41%;
-    position: fixed;
-    width: 350px;
-    height: 200px;
-    border-radius: 20px;
-    background-color: lightgrey;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-.Choice.hidden {
-    transform: translateY(100vh); 
+/* ------------ TÖBBJÁTÉKOS CANVAS -----------------*/
+.Multi {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 650px;
+    margin-top: 50px;
+}
+
+#MC1, #MC2 {
+    margin: 10px;
+}
+
+.GameOverlay-Multi1 {
+    position: absolute;
+    top: 51%;
+    left: 51%;
+    transform: translate(-50%, -50%); 
+    height: 70px;
+    width: 300px;
+    font-size: 24px;
+    color: white;
+    background: rgba(29, 29, 29, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.GameOverlay-Multi2 {
+    position: absolute;
+    top: 51%;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    height: 70px;
+    width: 300px;
+    font-size: 24px;
+    color: white;
+    background: rgba(29, 29, 29, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Position1, .Position2 {
+    transform: translateY(-200%);
     opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    text-align: center;
+    width: 300px;
 }
 
-.Choice button {
-    margin: 15px;
-    width: 250px;
-    height: 55px;
-    border-radius: 15px;
-    border: 1px solid lightgray;
-    background-color: grey;
-    font-size: 20px;
-}
-
-    /* --------- EGYJÁTÉKOS CANVAS -------------- */
-
-.SingleCanvas {
-    display: block;
-    margin: 20px auto;
+.Position1.active, .Position2.active {
+    transform: translateY(-680px);
     opacity: 1;
 }
-    /* ------------ TÖBBJÁTÉKOS CANVAS -----------------*/
-
-.MultiCanvas1 {
-    position: fixed;
-    left: 25%;
-    opacity: 1;
-}
-
-.MultiCanvas2 {
-    position: fixed;
-    right: 25%;
-    opacity: 1;
-}
-

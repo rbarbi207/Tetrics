@@ -1,20 +1,42 @@
+// ---------------- EFFEKT ELTÜNTETÉS ----------------
+function hideChoice() {
+    let choiceDiv = document.querySelector(".Choice");
+    let blurDiv = document.querySelector(".Blur");
+    choiceDiv.classList.add("hidden");
+    blurDiv.classList.add("hidden");
+    setTimeout(() => {
+        choiceDiv.style.display = "none";
+    }, 500);
+}
+
 // ---------------- EGYJÁTÉKOS TETRIS -------------------------
 function startSingle() {
     hideChoice();
     document.querySelector(".Single").style.display = "block";
-    document.querySelector(".Single").style.opacity = 1;
+    
+    setTimeout(() => {
+        document.querySelector('.Single').classList.add('active');
+    }, 100);
+    
     drawCanvas(".Single canvas");
 }
 
 //----------------- KÉTJÁTÉKOS TETRIS ----------------------------
 function startMulti() {
     hideChoice();
-    document.querySelector(".Multi").style.display = "block";
-    document.querySelector(".Multi").style.opacity = 1;
+    document.querySelector(".Multi").style.display = "flex";
+    
+    setTimeout(() => {
+        document.querySelector('.Position1').classList.add('active');
+        document.querySelector('.Position2').classList.add('active');
+    }, 100);
+    
     drawCanvas(".Multi canvas");
 }
 
 //-------------- CANVAS RAJZOLÁS ----------------------------
+let isGameRunning = false;
+
 function drawCanvas(selector) {
     const canvases = document.querySelectorAll(selector);
     canvases.forEach((canvas) => {
@@ -40,22 +62,23 @@ function drawCanvas(selector) {
         }   
         
 // ------------- ÜZENET MEGJELENÍTÉSE ------------------
-        /*const displayMessage = (param) => {
-            ctx.fillStyle = "black";
-            ctx.globalAlpha = 0.75;
-            ctx.fillRect(0, canvas.height / 2 - 30, canvas.width, 60)
-            
-            ctx.globalAlpha = 1;
-            ctx.fillStyle = "White";
-            ctx.font = "36px monospace";
-            ctx.textAlign = "center";
-            ctx.textBaseline = "middle";
-            ctx.fillText(param, canvas.width / 2, canvas.height / 2);
-        }
-        displayMessage("START GAME!")*/
+        
+
+        document.addEventListener("keydown", (e) => {
+            if ((e.key == " " || e.code == "Space" || e.keyCode == "32") && !isGameRunning){
+                isGameRunning = true;
+                document.querySelector(".GameOverlay").style.display = "none";
+                document.querySelector(".GameOverlay-Multi1").style.display = "none";
+                document.querySelector(".GameOverlay-Multi2").style.display = "none";
+                newTetromino();
+            }
+        })
+
+        let score = 0;
+
         
 //------------------ TETRIS BLOKKOK
-        /*const tetrominoes = {
+        const tetrominoes = {
             I: [
                 [1, 1, 1, 1]
             ],
@@ -93,22 +116,10 @@ function drawCanvas(selector) {
             S : "red",
             T : "purple",
             Z : "green",
-        }*/
+        }
         
 // -------------- GAME KEZDÉS ------------------
-        /*let isGameRunning = false;
         let timerId;
-        let score = 0;
-        
-        window.addEventListener("keydown", (e) => {
-            if ((e.key == " " || e.code == "Space" || e.keyCode == "32") && !isGameRunning){
-                isGameRunning = true;
-                newTetromino();
-                ctx.clearRect(0, canvas.height / 2 -30, canvas.width, 60);
-                ctx.clearRect(0, 0, canvas.width, canvas.height)
-                drawCanvas(selector)
-            }
-        });
         
         const grid = 30;
         const rows = canvas.height/grid;
@@ -117,26 +128,19 @@ function drawCanvas(selector) {
         function newTetromino() {
             const types = Object.keys(tetrominoes);
             const type = types[Math.floor(Math.random() * types.length)];
+
+            console.log("New tetromino:", type);
             
-            currentTetromino = {
+            /*currentTetromino = {
                 shape: tetrominoes[type],
                 x: Math.floor(columns / 2) - Math.floor(tetrominoes[type][0].length / 2),
                 y: 0,
                 type, 
             };
-            
-        }*/
+            console.log(currentTetromino)
+            */
+        }
     })
 }
 
 
-// ---------------- EFFEKT ELTÜNTETÉS ----------------
-function hideChoice() {
-    let choiceDiv = document.querySelector(".Choice");
-    let blurDiv = document.querySelector(".Blur");
-    choiceDiv.classList.add("hidden");
-    blurDiv.classList.add("hidden");
-    setTimeout(() => {
-        choiceDiv.style.display = "none";
-    }, 500);
-}
