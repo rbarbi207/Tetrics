@@ -201,3 +201,26 @@ canvas {
     transform: translateY(-680px);
     opacity: 1;
 }
+
+/* ------------------------ Üzenet --------------------- */
+
+.Loser {
+    opacity: 0;
+    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 40%;
+    left: 40.6%;
+    position: fixed;
+    width: 360px;
+    height: 180px;
+    border-radius: 20px;
+    background-color: lightgrey;
+    font-size: 30px;
+}
+
+.Loser img {
+    width: 130px;
+}
