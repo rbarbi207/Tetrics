@@ -17,19 +17,24 @@
             <div class="game-container" id="gameArea"></div>
 
             <div class="Single">
-                <h2>Score <span id="score">0</span></h2>
+                <h2>Score <span id="scoreSingle">0</span></h2>
                 <canvas id="canvas" class="SingleCanvas" width="300" height="600"></canvas>
                 <div class="GameOverlay">START GAME!</div>
             </div>
 
+            <div class="Loser">
+                <p>Szar vagy!</p>
+                <img src="laughing-cat.gif" alt="laughing-cat" title="laughing-cat">
+            </div>
+
             <div class="Multi">
                 <div class="Position1">
-                    <h2 id="MC1">Score <span id="score">0</span></h2>
+                    <h2 id="MC1">Score <span id="scoreMulti1">0</span></h2>
                     <canvas id="canvas1" class="MultiCanvas1" width="300" height="600"></canvas>
                     <div class="GameOverlay-Multi1">START GAME!</div>
                 </div>
                 <div class="Position2">
-                    <h2 id="MC2">Score <span id="score">0</span></h2>
+                    <h2 id="MC2">Score <span id="scoreMulti2">0</span></h2>
                     <canvas id="canvas2" class="MultiCanvas2" width="300" height="600"></canvas>
                     <div class="GameOverlay-Multi2">START GAME!</div>
                 </div>
@@ -42,6 +47,5 @@
         </div>
     </div>
     <script src="script.js"></script>
-    <script type="module" src="script.js"></script>
 </body>
 </html>
