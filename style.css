@@ -18,12 +18,33 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-image: url(background.jpg);
+    background-image: url(pictures/MultiColorBG.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
     overflow: hidden;
 }
 
 /* ------------------ FŐOLDAL -------------------- */
-.Choice {
+.HomeScreen {
+    color: white;
+    border: 3px solid white;
+    width: 500px;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    margin: 70px auto;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 600;
+    font-size: 20px;
+    background-color:rgba(29, 29, 29, 0.6);
+}
+
+.HomeScreen p {
+    text-decoration: underline;
+}
+
+/*.Choice {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -36,37 +57,38 @@ body {
     border-radius: 20px;
     background-color: lightgrey;
     transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
-}
+}*/
 
-.Choice.hidden {
+.HomeScreen.hidden {
     transform: translateY(100vh); 
     opacity: 0;
     display: none;
 }
 
 .Choice button {
+    color: white;
     margin: 15px;
-    width: 250px;
+    width: 180px;
     height: 55px;
     border-radius: 15px;
     border: 1px solid lightgray;
-    background-color: grey;
-    font-size: 20px;
-    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, font-size 0.2s ease-in-out;
+    background-color: rgb(41, 52, 102, 0.5);
+    font-size: 14px;
+    transition: 0.4s ease-in-out;
+    font-weight: 600;
 }
 
 .Choice button:hover {
-    color: white;
+    background-color: white;
     position: relative;
-    height: 60px;
-    width: 280px;
-    font-size: 22px;
+    color: rgb(62, 60, 160);
 }
 
 .container {
     width: 1200px;
     height: 900px;
-    background-color: gray;
+    background-color: rgba(120, 200, 390, 0.2);
+    border-radius: 10px;
     margin: auto;
 }
 
@@ -215,12 +237,86 @@ canvas {
     left: 40.6%;
     position: fixed;
     width: 360px;
-    height: 180px;
+    height: 260px;
     border-radius: 20px;
     background-color: lightgrey;
     font-size: 30px;
+    padding: 10px;
 }
 
 .Loser img {
+    margin-top: 15px;
     width: 130px;
 }
+
+.Loser button {
+    margin-top: 15px;
+    width: 300px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background-color: grey;
+    font-size: 25px;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.Loser button:hover {
+    color: white;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 250px;
+    font-size: 28px;
+}
+
+/* ------------------------ Zene --------------------- */
+#volume-control {
+    margin-top: -140px !important;
+}
+  
+#volume-icon {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+  
+#volume-slider {
+    position: relative;
+    top: -4px;
+    -webkit-appearance: none;
+    width: 100px;
+    height: 5px;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+  
+#volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: white;
+    margin-top: -6px; 
+}
+
+#volume-slider::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: white;
+}
+
+#volume-slider::-webkit-slider-runnable-track {
+    background: white;
+    height: 5px;
+    border-radius: 3px;
+}
+#volume-slider::-moz-range-track {
+    background: white;
+    height: 5px;
+    border-radius: 3px;
+}
+
+

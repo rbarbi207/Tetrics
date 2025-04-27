@@ -1,9 +1,1 @@
-//Single + Multiyplayer
-//Canvas
-//Blokkok + mozgatás, forgatás (milyen gombokkal)
-//Csíkok kitörlése
-//Timer
-//Nyerés (Csoda dolgok)
-//CCS -> Háttér
-//Hangeffekt??
-//Pontszám
+// 

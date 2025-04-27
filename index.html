@@ -6,12 +6,24 @@
     <title>Tetris</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="icon" href="pictures/Favicon.png" type="image/x-icon"> 
 </head>
 <body>
-    <audio>
-        <embed name="Háttér" src="Neon Dreams.mp3" loop="true" hidden="true" autostart="true">
-      </audio>
     <div class="container">
+        <div class="HomeScreen">
+            <img src="pictures/TETRIS.png" alt="TETRIS">
+            <p>NEON DREAMS</p>
+            <div id="volume-control">
+                <i class="fa fa-volume-up" id="audio-icon"></i>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+                <audio id="bg-audio" src="sounds/Neon Dreams.mp3" autoplay loop></audio> 
+            </div>
+            <div class="Choice">
+                <button onclick="startSingle()" style="cursor: pointer;">SinglePlayer</button>
+                <button onclick="startMulti()" style="cursor: pointer;">MultiPlayer</button>
+            </div>
+        </div>
         <div class="Blur">
             <p id="arrow" onclick="location.reload()" style="cursor: pointer;"><</p>
             <h1>Tetris</h1>
@@ -22,33 +34,30 @@
             <div class="Single">
                 <h2>Score <span id="scoreSingle">0</span></h2>
                 <canvas id="canvas" class="SingleCanvas" width="300" height="600"></canvas>
-                <div class="GameOverlay">START GAME!</div>
+                <div class="GameOverlay">PRESS SPACE TO START!</div>
             </div>
 
             <div class="Loser">
-                <p>Szar vagy!</p>
-                <img src="laughing-cat.gif" alt="laughing-cat" title="laughing-cat">
+                <p>GAME OVER</p>
+                <img src="pictures/laughing-cat.gif" alt="laughing-cat">
+                <button onclick="location.reload()" style="cursor: pointer;">Restart</button>
             </div>
 
             <div class="Multi">
                 <div class="Position1">
                     <h2 id="MC1">Score <span id="scoreMulti1">0</span></h2>
                     <canvas id="canvas1" class="MultiCanvas1" width="300" height="600"></canvas>
-                    <div class="GameOverlay-Multi1">START GAME!</div>
+                    <div class="GameOverlay-Multi1">PRESS SPACE TO START!</div>
                 </div>
                 <div class="Position2">
                     <h2 id="MC2">Score <span id="scoreMulti2">0</span></h2>
                     <canvas id="canvas2" class="MultiCanvas2" width="300" height="600"></canvas>
-                    <div class="GameOverlay-Multi2">START GAME!</div>
+                    <div class="GameOverlay-Multi2">PRESS SPACE TO START!</div>
                 </div>
             </div>
         </div>
         
-        <div class="Choice">
-            <button onclick="startSingle()" style="cursor: pointer;">SinglePlayer</button>
-            <button onclick="startMulti()" style="cursor: pointer;">MultiPlayer</button>
-        </div>
     </div>
-    <script src="script.js"></script>
+    <script src="tetris.js"></script>
 </body>
 </html>
