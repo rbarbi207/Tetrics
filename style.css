@@ -271,7 +271,7 @@ canvas {
 
 /* ------------------------ Zene --------------------- */
 #volume-control {
-    margin-top: -140px !important;
+    margin-top: -30px !important;
 }
   
 #volume-icon {
@@ -319,4 +319,10 @@ canvas {
     border-radius: 3px;
 }
 
-
+.controls{
+    display: flex;
+    flex-direction: column;
+    margin: 70px auto;
+    align-items: center;
+    justify-content: space-around;
+}
