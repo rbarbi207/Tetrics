@@ -225,8 +225,98 @@ canvas {
 }
 
 /* ------------------------ Üzenet --------------------- */
+.Winner1 {
+    opacity: 0;
+    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 40%;
+    left: 40.6%;
+    position: fixed;
+    width: 360px;
+    height: 260px;
+    border-radius: 20px;
+    background-color: lightgrey;
+    font-size: 30px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.Winner1 img {
+    margin-top: 15px;
+    width: 130px;
+}
+
+.Winner1 button {
+    margin-top: 15px;
+    width: 300px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background-color: grey;
+    font-size: 25px;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.Winner1 button:hover {
+    pointer-events: none;
+    color: white;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 250px;
+    font-size: 28px;
+}
+
+.Winner2 {
+    z-index: 1000;
+    opacity: 0;
+    display: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 40%;
+    left: 40.6%;
+    position: fixed;
+    width: 360px;
+    height: 260px;
+    border-radius: 20px;
+    background-color: lightgrey;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.Winner2 img {
+    margin-top: 15px;
+    width: 130px;
+}
+
+.Winner2 button {
+    margin-top: 15px;
+    width: 300px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background-color: grey;
+    font-size: 25px;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.Winner2 button:hover {
+    pointer-events: none;
+    color: white;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 250px;
+    font-size: 28px;
+}
 
 .Loser {
+    z-index: 1000;
     opacity: 0;
     display: none;
     display: flex;
@@ -262,6 +352,7 @@ canvas {
 }
 
 .Loser button:hover {
+    pointer-events: none;
     color: white;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -270,10 +361,24 @@ canvas {
 }
 
 /* ------------------------ Zene --------------------- */
-#volume-control {
-    margin-top: -140px !important;
+.volume-control {
+    z-index: 1000;
+    margin-top: -140px;
+    transition: bottom 0.5s ease-in-out;
 }
   
+.volume-control.active {
+    position: fixed;
+    left: 5px;
+    bottom: 5px;
+    display: block;
+}
+
+#audio-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
 #volume-icon {
     width: 10px;
     height: 10px;
@@ -282,7 +387,7 @@ canvas {
   
 #volume-slider {
     position: relative;
-    top: -4px;
+    top: -6px;
     -webkit-appearance: none;
     width: 100px;
     height: 5px;
@@ -299,13 +404,7 @@ canvas {
     border-radius: 50%;
     background: white;
     margin-top: -6px; 
-}
-
-#volume-slider::-moz-range-thumb {
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: white;
+    cursor: pointer;
 }
 
 #volume-slider::-webkit-slider-runnable-track {
@@ -313,10 +412,6 @@ canvas {
     height: 5px;
     border-radius: 3px;
 }
-#volume-slider::-moz-range-track {
-    background: white;
-    height: 5px;
-    border-radius: 3px;
-}
+
 
 

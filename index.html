@@ -14,15 +14,25 @@
         <div class="HomeScreen">
             <img src="pictures/TETRIS.png" alt="TETRIS">
             <p>NEON DREAMS</p>
-            <div id="volume-control">
-                <i class="fa fa-volume-up" id="audio-icon"></i>
-                <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
-                <audio id="bg-audio" src="sounds/Neon Dreams.mp3" autoplay loop></audio> 
+            <audio id="bg-audio" src="sounds/Neon Dreams.mp3" autoplay loop></audio>
+            <div class="volume-control">
+                <i id="audio-icon" class="fas fa-volume-up"></i>
+                <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.5">
             </div>
             <div class="Choice">
                 <button onclick="startSingle()" style="cursor: pointer;">SinglePlayer</button>
                 <button onclick="startMulti()" style="cursor: pointer;">MultiPlayer</button>
             </div>
+        </div>
+        <div class="Winner1">
+            <p>CONGRATS PLAYER 1 WON!</p>
+            <img src="pictures/yippee-cat.gif" alt="yippee-cat">
+            <button onclick="location.reload()" style="cursor: pointer;">Restart</button>
+        </div>
+        <div class="Winner2">
+            <p>CONGRATS PLAYER 2 WON!</p>
+            <img src="pictures/yippee-cat.gif" alt="yippee-cat">
+            <button onclick="location.reload()" style="cursor: pointer;">Restart</button>
         </div>
         <div class="Blur">
             <p id="arrow" onclick="location.reload()" style="cursor: pointer;"><</p>

@@ -25,7 +25,9 @@ class TetrisGame {
         this.columns = canvas.width / this.gridSize;
         this.board = Array.from({ length: this.rows }, () => Array(this.columns).fill(0));
         this.score = 0;
-        this.currentTetromino = null;
+        this.level = 1;
+        this.initialSpeed = 500;
+        this.speed = this.initialSpeed;
         this.isRunning = false;
         this.isMulti = isMulti;
         this.playerNumber = playerNumber;
@@ -57,6 +59,11 @@ class TetrisGame {
         
         this.drawGrid();
         this.setupControls();
+        this.preloadSounds();
+    }
+
+    preloadSounds() {
+        Object.values(this.sounds).forEach(sound => sound.load());
     }
     
     drawGrid() {
@@ -93,10 +100,10 @@ class TetrisGame {
                     if (e.key === "ArrowDown") this.moveTetromino(0, 1);
                     if (e.key === "ArrowUp") this.rotateTetromino();
                 } else if (this.playerNumber === 1) {
-                    if (e.key === "a" || e.key === "A") this.moveTetromino(-1, 0);
-                    if (e.key === "d" || e.key === "D") this.moveTetromino(1, 0);
-                    if (e.key === "s" || e.key === "S") this.moveTetromino(0, 1);
-                    if (e.key === "w" || e.key === "W") this.rotateTetromino();
+                    if (e.key.toLowerCase() === "a") this.moveTetromino(-1, 0);
+                    if (e.key.toLowerCase() === "d") this.moveTetromino(1, 0);
+                    if (e.key.toLowerCase() === "s") this.moveTetromino(0, 1);
+                    if (e.key.toLowerCase() === "w") this.rotateTetromino();
                 }
             }
             if (e.key === " " && !this.isRunning) {
@@ -130,7 +137,7 @@ class TetrisGame {
             document.querySelector(".GameOverlay").style.display = "none";
         }
         this.spawnTetromino();
-        this.timerId = setInterval(() => this.gameLoop(), 500);
+        this.timerId = setInterval(() => this.gameLoop(), this.speed);
     }
     
     spawnTetromino() {
@@ -151,13 +158,30 @@ class TetrisGame {
             this.mergeTetromino();
             this.sounds.land.play();
             this.spawnTetromino();
+            console.log(this.speed);
             if (this.collision(this.currentTetromino.shape, this.currentTetromino.x, this.currentTetromino.y)) {
                 clearInterval(this.timerId);
                 this.isRunning = false;
-                if (this.canvas != document.querySelector("#canvas1") && this.canvas != document.querySelector("#canvas2")){
+                if (this.isMulti) {
+                    if (this.playerNumber === 1) {
+                        document.querySelector(".Winner2").style.opacity = "1";
+                        document.querySelector(".Winner2").style.display = "flex";
+                        document.querySelector(".Winner2 button:hover").style.pointerEvents = "all";
+                    } 
+                    else if (this.playerNumber === 2) {
+                        const winner1 = document.querySelector(".Winner1");
+                        winner1.style.opacity = "1";
+                        winner1.style.display = "flex";
+                        document.querySelector(".Winner1 button:hover").style.pointerEvents = "all";
+                    }
+                }
+                else {
                     document.querySelector(".Loser").style.opacity = "1";
+                    document.querySelector(".Loser").style.display = "flex";
+                    document.querySelector(".Loser button:hover").style.pointerEvents = "all";
                     clickSound.play();
                 }
+
             }
         }
         this.draw();
@@ -242,13 +266,23 @@ class TetrisGame {
         const scoreEl = this.canvas.closest(".Single")?.querySelector("#scoreSingle") ||
         this.canvas.closest(".Position1, .Position2")?.querySelector("span");
         if (scoreEl) scoreEl.textContent = this.score;
+    
+        const newLevel = Math.floor(this.score / 500) + 1;
+        if (newLevel > this.level) {
+            this.level = newLevel;
+            this.speed = Math.max(100, this.initialSpeed - (this.level - 1) * 50);
+            clearInterval(this.timerId);
+            this.timerId = setInterval(() => this.gameLoop(), this.speed);
+        }
     }
 }
 
 function startSingle() {
     hideChoice();
     document.querySelector(".Single").style.display = "block";
-    setTimeout(() => document.querySelector('.Single').classList.add('active'), 100);
+    setTimeout(() => {
+        document.querySelector('.Single').classList.add('active');
+    }, 100);
     new TetrisGame(document.querySelector("#canvas"), false, 3);
 }
 
@@ -273,10 +307,9 @@ document.addEventListener("DOMContentLoaded", function () {
     var audio = document.getElementById("bg-audio");
     var audioIcon = document.getElementById("audio-icon");
     var volumeSlider = document.getElementById("volume-slider");
-
-    var previousVolume = volumeSlider.value;
-    audio.volume = 0.15;
-
+    var previousVolume = parseFloat(volumeSlider.value) || 0.5;
+    audio.volume = previousVolume;
+    
     audioIcon.addEventListener("click", function () {
         if (audio.muted || audio.volume === 0) {
             audio.muted = false;
@@ -295,7 +328,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     volumeSlider.addEventListener("input", function () {
-        audio.volume = volumeSlider.value;
+        audio.volume = parseFloat(volumeSlider.value);
         audio.muted = audio.volume === 0;
 
         if (audio.volume == 0) {
