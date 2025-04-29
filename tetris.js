@@ -155,8 +155,8 @@ class TetrisGame {
         if (!this.collision(this.currentTetromino.shape, this.currentTetromino.x, this.currentTetromino.y + 1)) {
             this.currentTetromino.y++;
         } else {
-            this.mergeTetromino();
             this.sounds.land.play();
+            this.mergeTetromino();
             this.spawnTetromino();
             console.log(this.speed);
             if (this.collision(this.currentTetromino.shape, this.currentTetromino.x, this.currentTetromino.y)) {
@@ -166,22 +166,29 @@ class TetrisGame {
                     if (this.playerNumber === 1) {
                         document.querySelector(".Winner2").style.opacity = "1";
                         document.querySelector(".Winner2").style.display = "flex";
-                        document.querySelector(".Winner2 button:hover").style.pointerEvents = "all";
+                        document.querySelector(".Winner2").style.flexDirection = "column";
+                        document.querySelector(".Winner2").style.justifyContent = "center";
+                        document.querySelector(".Winner2").style.alignItems = "center";
+                        clickSound.play();
                     } 
                     else if (this.playerNumber === 2) {
                         const winner1 = document.querySelector(".Winner1");
                         winner1.style.opacity = "1";
                         winner1.style.display = "flex";
-                        document.querySelector(".Winner1 button:hover").style.pointerEvents = "all";
+                        winner1.style.flexDirection = "column";
+                        winner1.style.justifyContent = "center";
+                        winner1.style.alignItems = "center";
+                        clickSound.play();
                     }
                 }
                 else {
                     document.querySelector(".Loser").style.opacity = "1";
                     document.querySelector(".Loser").style.display = "flex";
-                    document.querySelector(".Loser button:hover").style.pointerEvents = "all";
+                    document.querySelector(".Loser").style.flexDirection = "column";
+                    document.querySelector(".Loser").style.justifyContent = "center";
+                    document.querySelector(".Loser").style.alignItems = "center";
                     clickSound.play();
                 }
-
             }
         }
         this.draw();

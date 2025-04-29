@@ -24,35 +24,25 @@
                 <button onclick="startMulti()" style="cursor: pointer;">MultiPlayer</button>
             </div>
         </div>
-        <div class="Winner1">
-            <p>CONGRATS PLAYER 1 WON!</p>
-            <img src="pictures/yippee-cat.gif" alt="yippee-cat">
-            <button onclick="location.reload()" style="cursor: pointer;">Restart</button>
-        </div>
-        <div class="Winner2">
-            <p>CONGRATS PLAYER 2 WON!</p>
-            <img src="pictures/yippee-cat.gif" alt="yippee-cat">
-            <button onclick="location.reload()" style="cursor: pointer;">Restart</button>
-        </div>
         <div class="Blur">
             <p id="arrow" onclick="location.reload()" style="cursor: pointer;"><</p>
             <h1>Tetris</h1>
             <div class="SinglePlayer" style="display: none;"></div>
             <div class="MultiPlayer" style="display: none;"></div>
             <div class="game-container" id="gameArea"></div>
-
+            
             <div class="Single">
                 <h2>Score <span id="scoreSingle">0</span></h2>
                 <canvas id="canvas" class="SingleCanvas" width="300" height="600"></canvas>
                 <div class="GameOverlay">PRESS SPACE TO START!</div>
             </div>
-
+            
             <div class="Loser">
                 <p>GAME OVER</p>
                 <img src="pictures/laughing-cat.gif" alt="laughing-cat">
                 <button onclick="location.reload()" style="cursor: pointer;">Restart</button>
             </div>
-
+            
             <div class="Multi">
                 <div class="Position1">
                     <h2 id="MC1">Score <span id="scoreMulti1">0</span></h2>
@@ -65,8 +55,17 @@
                     <div class="GameOverlay-Multi2">PRESS SPACE TO START!</div>
                 </div>
             </div>
+            <div class="Winner1">
+                <p>CONGRATS PLAYER 1 WON!</p>
+                <img src="pictures/yippee-cat.gif" alt="yippee-cat">
+                <button onclick="location.reload()" style="cursor: pointer;">Restart</button>
+            </div>
+            <div class="Winner2">
+                <p>CONGRATS PLAYER 2 WON!</p>
+                <img src="pictures/yippee-cat.gif" alt="yippee-cat">
+                <button onclick="location.reload()" style="cursor: pointer;">Restart</button>
+            </div>
         </div>
-        
     </div>
     <script src="tetris.js"></script>
 </body>

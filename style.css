@@ -44,21 +44,6 @@ body {
     text-decoration: underline;
 }
 
-/*.Choice {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    top: 35%;
-    left: 41%;
-    position: fixed;
-    width: 350px;
-    height: 200px;
-    border-radius: 20px;
-    background-color: lightgrey;
-    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
-}*/
-
 .HomeScreen.hidden {
     transform: translateY(100vh); 
     opacity: 0;
@@ -117,9 +102,16 @@ body {
 }
 
 h1 {
-    padding-top: 20px;
+    margin-top: 20px !important;
+    padding-top: 5px !important;
     text-align: center;
     font-size: 40px;
+    color: white;
+    text-shadow: 4px 4px #000000;
+    border: none;
+    border-radius: 20px;
+    width: 300px;
+    margin: 0 auto;
 }
 
 canvas {
@@ -142,10 +134,12 @@ canvas {
     margin: 40px;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     text-align: center;
+    color: white;
 }
 
 .Single h2 {
     margin-bottom: 10px;
+    text-shadow: 4px 4px #000000;
 }
 
 .Single.active {
@@ -178,7 +172,12 @@ canvas {
 }
 
 #MC1, #MC2 {
+    color: white;
     margin: 10px;
+}
+
+h2 {
+    text-shadow: 4px 4px #000000;
 }
 
 .GameOverlay-Multi1 {
@@ -228,10 +227,6 @@ canvas {
 .Winner1 {
     opacity: 0;
     display: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     top: 40%;
     left: 40.6%;
     position: fixed;
@@ -239,9 +234,9 @@ canvas {
     height: 260px;
     border-radius: 20px;
     background-color: lightgrey;
-    font-size: 30px;
+    font-size: 25px;
     padding: 10px;
-    z-index: 1000;
+    text-align: center;
 }
 
 .Winner1 img {
@@ -262,7 +257,6 @@ canvas {
 }
 
 .Winner1 button:hover {
-    pointer-events: none;
     color: white;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -271,13 +265,8 @@ canvas {
 }
 
 .Winner2 {
-    z-index: 1000;
     opacity: 0;
     display: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     top: 40%;
     left: 40.6%;
     position: fixed;
@@ -285,8 +274,9 @@ canvas {
     height: 260px;
     border-radius: 20px;
     background-color: lightgrey;
-    font-size: 30px;
+    font-size: 25px;
     padding: 10px;
+    text-align: center;
 }
 
 .Winner2 img {
@@ -307,7 +297,6 @@ canvas {
 }
 
 .Winner2 button:hover {
-    pointer-events: none;
     color: white;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -316,13 +305,8 @@ canvas {
 }
 
 .Loser {
-    z-index: 1000;
     opacity: 0;
     display: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     top: 40%;
     left: 40.6%;
     position: fixed;
@@ -352,7 +336,6 @@ canvas {
 }
 
 .Loser button:hover {
-    pointer-events: none;
     color: white;
     padding-top: 6px;
     padding-bottom: 6px;
