@@ -1,5 +1,6 @@
 const clickSound = new Audio("sounds/game-over-arcade-6435.mp3");
 clickSound.volume = 1; 
+allLandingSounds = [];
 
 class Tetromino {
     constructor(type, shape, color) {
@@ -51,11 +52,12 @@ class TetrisGame {
             T: "purple",
             Z: "green"
         };
-
+        
         this.sounds = {
             land: new Audio("sounds/trung-gach-a-96162.mp3"),
             line: new Audio("sounds/mixkit-video-game-retro-click-237.wav")
         };
+        allLandingSounds.push(this.sounds.land);
         
         this.drawGrid();
         this.setupControls();
@@ -274,12 +276,35 @@ class TetrisGame {
         this.canvas.closest(".Position1, .Position2")?.querySelector("span");
         if (scoreEl) scoreEl.textContent = this.score;
     
-        const newLevel = Math.floor(this.score / 500) + 1;
+        const newLevel = Math.floor(this.score / 400) + 1;
         if (newLevel > this.level) {
             this.level = newLevel;
             this.speed = Math.max(100, this.initialSpeed - (this.level - 1) * 50);
             clearInterval(this.timerId);
             this.timerId = setInterval(() => this.gameLoop(), this.speed);
+        }
+        if (this.playerNumber == 1 && this.score == 2000) {
+            const winner1 = document.querySelector(".Winner1");
+            winner1.style.opacity = "1";
+            winner1.style.display = "flex";
+            winner1.style.flexDirection = "column";
+            winner1.style.justifyContent = "center";
+            winner1.style.alignItems = "center";
+            clickSound.play();
+            allLandingSounds.forEach(sound => {
+                sound.volume = 0;
+            })
+        }
+        if (this.playerNumber == 2 && this.score == 2000) {
+            document.querySelector(".Winner2").style.opacity = "1";
+            document.querySelector(".Winner2").style.display = "flex";
+            document.querySelector(".Winner2").style.flexDirection = "column";
+            document.querySelector(".Winner2").style.justifyContent = "center";
+            document.querySelector(".Winner2").style.alignItems = "center";
+            clickSound.play();
+            allLandingSounds.forEach(sound => {
+                sound.volume = 0;
+            })
         }
     }
 }
@@ -352,4 +377,4 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener('click', function playAudioOnce() {
     document.getElementById('bg-audio').play();
     document.removeEventListener('click', playAudioOnce);
-  });
+});

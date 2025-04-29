@@ -218,6 +218,24 @@ h2 {
     width: 300px;
 }
 
+.Position1 p {
+    margin-top: 50px;
+    color: white;
+    font-size: 18px;
+    width: 420px;
+    margin-left: -50px;
+    text-shadow: 4px 4px #000000;
+}
+
+.Position2 p {
+    margin-top: 50px;
+    color: white;
+    font-size: 18px;
+    width: 420px;
+    margin-left: -50px;
+    text-shadow: 4px 4px #000000;
+}
+
 .Position1.active, .Position2.active {
     transform: translateY(-680px);
     opacity: 1;
