@@ -348,3 +348,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+document.addEventListener('click', function playAudioOnce() {
+    document.getElementById('bg-audio').play();
+    document.removeEventListener('click', playAudioOnce);
+  });
