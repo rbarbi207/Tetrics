@@ -44,21 +44,6 @@ body {
     text-decoration: underline;
 }
 
-/*.Choice {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    top: 35%;
-    left: 41%;
-    position: fixed;
-    width: 350px;
-    height: 200px;
-    border-radius: 20px;
-    background-color: lightgrey;
-    transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
-}*/
-
 .HomeScreen.hidden {
     transform: translateY(100vh); 
     opacity: 0;
@@ -117,9 +102,16 @@ body {
 }
 
 h1 {
-    padding-top: 20px;
+    margin-top: 20px !important;
+    padding-top: 5px !important;
     text-align: center;
     font-size: 40px;
+    color: white;
+    text-shadow: 4px 4px #000000;
+    border: none;
+    border-radius: 20px;
+    width: 300px;
+    margin: 0 auto;
 }
 
 canvas {
@@ -142,10 +134,12 @@ canvas {
     margin: 40px;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     text-align: center;
+    color: white;
 }
 
 .Single h2 {
     margin-bottom: 10px;
+    text-shadow: 4px 4px #000000;
 }
 
 .Single.active {
@@ -178,7 +172,12 @@ canvas {
 }
 
 #MC1, #MC2 {
+    color: white;
     margin: 10px;
+}
+
+h2 {
+    text-shadow: 4px 4px #000000;
 }
 
 .GameOverlay-Multi1 {
@@ -225,14 +224,89 @@ canvas {
 }
 
 /* ------------------------ Üzenet --------------------- */
+.Winner1 {
+    opacity: 0;
+    display: none;
+    top: 40%;
+    left: 40.6%;
+    position: fixed;
+    width: 360px;
+    height: 260px;
+    border-radius: 20px;
+    background-color: lightgrey;
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+.Winner1 img {
+    margin-top: 15px;
+    width: 130px;
+}
+
+.Winner1 button {
+    margin-top: 15px;
+    width: 300px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background-color: grey;
+    font-size: 25px;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.Winner1 button:hover {
+    color: white;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 250px;
+    font-size: 28px;
+}
+
+.Winner2 {
+    opacity: 0;
+    display: none;
+    top: 40%;
+    left: 40.6%;
+    position: fixed;
+    width: 360px;
+    height: 260px;
+    border-radius: 20px;
+    background-color: lightgrey;
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+}
+
+.Winner2 img {
+    margin-top: 15px;
+    width: 130px;
+}
+
+.Winner2 button {
+    margin-top: 15px;
+    width: 300px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background-color: grey;
+    font-size: 25px;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+.Winner2 button:hover {
+    color: white;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    width: 250px;
+    font-size: 28px;
+}
 
 .Loser {
     opacity: 0;
     display: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     top: 40%;
     left: 40.6%;
     position: fixed;
@@ -270,10 +344,24 @@ canvas {
 }
 
 /* ------------------------ Zene --------------------- */
-#volume-control {
-    margin-top: -30px !important;
+.volume-control {
+    z-index: 1000;
+    margin-top: -140px;
+    transition: bottom 0.5s ease-in-out;
 }
   
+.volume-control.active {
+    position: fixed;
+    left: 5px;
+    bottom: 5px;
+    display: block;
+}
+
+#audio-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
 #volume-icon {
     width: 10px;
     height: 10px;
@@ -282,7 +370,7 @@ canvas {
   
 #volume-slider {
     position: relative;
-    top: -4px;
+    top: -6px;
     -webkit-appearance: none;
     width: 100px;
     height: 5px;
@@ -299,13 +387,7 @@ canvas {
     border-radius: 50%;
     background: white;
     margin-top: -6px; 
-}
-
-#volume-slider::-moz-range-thumb {
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: white;
+    cursor: pointer;
 }
 
 #volume-slider::-webkit-slider-runnable-track {
@@ -313,11 +395,7 @@ canvas {
     height: 5px;
     border-radius: 3px;
 }
-#volume-slider::-moz-range-track {
-    background: white;
-    height: 5px;
-    border-radius: 3px;
-}
+
 
 .controls{
     display: flex;
