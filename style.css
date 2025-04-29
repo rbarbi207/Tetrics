@@ -397,4 +397,10 @@ h2 {
 }
 
 
-
+.controls{
+    display: flex;
+    flex-direction: column;
+    margin: 70px auto;
+    align-items: center;
+    justify-content: space-around;
+}
